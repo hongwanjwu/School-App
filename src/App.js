@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import request from 'request.js';
 
-function App() {
-  return (
-    <div className="app">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      teachers: [],
+      students: [],
+      classes: [],
+      selected: []
+    };
+  }
+
+  componentDidMount() {
+    request.getAll(info => {
+      const teachers = info.teachers;
+      const students = info.students;
+      const classes = info.classes;
+      this.setState({teachers, students, classes});
+    });
+  }
 }
 
 export default App;
