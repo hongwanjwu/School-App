@@ -1,4 +1,4 @@
-# EKA FULLSTACK DEVELOPER TECHNICAL CHALLENGE
+# School App
 
 
 ## Usage
@@ -27,3 +27,6 @@ npm run build
 ```
 
 6. Go to localhost:3000
+
+Node version: 13.1
+Postgres version: 11.5
