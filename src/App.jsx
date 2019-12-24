@@ -3,6 +3,7 @@ import request from './request.js';
 import Teachers from './Teachers.jsx';
 import Students from './Students.jsx';
 import Classes from './Classes.jsx';
+import Axios from 'axios';
 
 class App extends React.Component {
   constructor() {
@@ -13,6 +14,8 @@ class App extends React.Component {
       classes: [],
       selected: []
     };
+
+    this.getStudents = this.getStudents.bind(this);
   }
 
   componentDidMount() {
@@ -24,12 +27,21 @@ class App extends React.Component {
     });
   }
 
+  getStudents(teacherId) {
+    request.getStudents(teacherId, info => {
+      const students = info.students;
+      const classes = info.classes;
+      this.setState({students, classes});
+    });
+  }
+
   render() {
     return (
       <div>
         <Teachers
           teachers={this.state.teachers}
           selected={this.state.selected}
+          getStudents={this.getStudents}
         />
         <Classes classes={this.state.classes} />
         <Students students={this.state.students} />
