@@ -1,10 +1,10 @@
 const {Client} = require('pg');
-const PGPW = require('../config.js');
+const PG = require('../config.js');
 
 const client = new Client({
-  user: 'mac_home',
+  user: PG.user,
   database: 'school',
-  password: PGPW,
+  password: PG.PW,
   port: 5432
 });
 

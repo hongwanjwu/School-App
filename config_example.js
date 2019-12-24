@@ -1,3 +1,6 @@
-const PGPW = '';
+const PG = {
+  PW: '',
+  user: ''
+};
 
-module.exports = PGPW;
+module.exports = PG;
