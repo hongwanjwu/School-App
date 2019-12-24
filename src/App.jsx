@@ -1,5 +1,8 @@
 import React from 'react';
-import request from 'request.js';
+import request from './request.js';
+import Teachers from './Teachers.jsx';
+import Students from './Students.jsx';
+import Classes from './Classes.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -19,6 +22,19 @@ class App extends React.Component {
       const classes = info.classes;
       this.setState({teachers, students, classes});
     });
+  }
+
+  render() {
+    return (
+      <div>
+        <Teachers
+          teachers={this.state.teachers}
+          selected={this.state.selected}
+        />
+        <Students students={this.state.students} />
+        <Classes classes={this.state.classes} />
+      </div>
+    );
   }
 }
 
