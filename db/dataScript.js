@@ -7,8 +7,12 @@ const writeStudents = fs.createWriteStream('students.csv');
 const writeClasses = fs.createWriteStream('classes.csv');
 const writeClasStudents = fs.createWriteStream('clas_students.csv');
 
+writeTeachers.write('fullName\n', 'utf8');
+writeStudents.write('fullName\n', 'utf8');
+writeClasses.write('teacherId|className\n', 'utf8');
+writeClasStudents.write('classId|studentId\n', 'utf8');
+
 const writeCSV = (table, writer, cb) => {
-  const encoding = 'utf-8';
   let i =
     table === 'teachers'
       ? 10
@@ -20,9 +24,11 @@ const writeCSV = (table, writer, cb) => {
 
   const write = () => {
     let ok = true;
-    let data = [];
+    const encoding = 'utf-8';
 
     do {
+      let data = [];
+
       if (table === 'teachers' || 'students') {
         const fullName = faker.name.findName();
         data.push(fullName + '\n');
@@ -30,7 +36,7 @@ const writeCSV = (table, writer, cb) => {
       }
 
       if (table === 'classes') {
-        const teacherId = Math.floor(Math.random() * 19) + 1;
+        const teacherId = Math.floor(Math.random() * 10) + 1;
         const className = faker.lorem.word();
 
         data = [teacherId, className + '\n'].join('|');

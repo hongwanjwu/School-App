@@ -26,6 +26,9 @@
   "scripts": {
     "start": "nodemon ./server/index.js",
     "build": "webpack -d -w",
+    "schema": "psql -U mac_home -d postgres -f ./db/schema.sql",
+    "mockData": "node ./db/dataScript.js",
+    "seed": "node ./db/dataSeed.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
