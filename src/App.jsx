@@ -31,8 +31,8 @@ class App extends React.Component {
           teachers={this.state.teachers}
           selected={this.state.selected}
         />
-        <Students students={this.state.students} />
         <Classes classes={this.state.classes} />
+        <Students students={this.state.students} />
       </div>
     );
   }
